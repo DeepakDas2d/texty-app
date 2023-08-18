@@ -1,19 +1,15 @@
 import React from "react";
 import "./Navbar.css";
+import PropTypes from 'prop-types';
 
-export default function Navbar() {
-  const navBgColor = {
-    backgroundColor: "#e3f2fd",
-   };
+export default function Navbar(props) {
   return (
     <div>
-      {/* <nav className="navbar navbar-expand-lg  bg-body-tertiary  bg-dark border-bottom border-body"  > */}
-      {/* <nav class="navbar bg-primary navbar-expand-lg border-bottom border-body" data-bs-theme="dark"> */}
-      <nav class="navbar navbar-expand-lg" style={navBgColor}>
+      <nav className="navbar navbar-expand-lg"  >
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
-            TextyApp
-          </a>
+            {props.title}
+           </a>
           <button
             className="navbar-toggler"
             type="button"
@@ -29,12 +25,12 @@ export default function Navbar() {
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <a className="nav-link active" aria-current="page" href="/">
-                  Home
+                  {props.homeTitle}
                 </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link active" aria-current="page" href="/">
-                  About
+                   {props.aboutTitle}
                 </a>
               </li>
             </ul>
@@ -56,4 +52,16 @@ export default function Navbar() {
   );
 }
 
-// data-bs-theme="dark"
+//setting proptypes of prop
+Navbar.propTypes = {
+  title: PropTypes.string.isRequired,
+  aboutTitle: PropTypes.string.isRequired,
+  homeTitle: PropTypes.string.isRequired
+}
+
+//setting default value for props
+Navbar.defaultProps ={
+  title: "Set Title",
+  aboutTitle: "Set Element",
+  homeTitle: "Set Element"
+}
